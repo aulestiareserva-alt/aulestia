@@ -4,7 +4,7 @@
 
 const CONFIG = {
     // URL de Google Apps Script
-    SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbxPicRIhRbetsR2ZfZ4cCp3xcSE07aRWBHZ_-OEfnz_DkNXSkGbT9mDQj-2RyU7QFE1/exec',
+    SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwujRdHByr9lm_YFrmexRAkJPr0BfPkRCbyortT-I8cubm1DM75kvtOs-DH7q0wB63M/exec',
     
     // Configuració de preus per defecte
     DEFAULT_PRICES: {
