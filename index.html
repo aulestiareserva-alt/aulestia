@@ -167,69 +167,70 @@
                         📅 Estades Llargues (30+ nits)
                     </div>
                 </div>
-
-                <!-- Secció de Dates -->
-                <div class="seccio-dates">
-                    <h3 style="margin-bottom: 1rem; color: #2c3e50;">📅 Selecciona les teves dates</h3>
-
-                    <div class="inputs-dates">
-                        <div class="form-grup">
-                            <label class="form-label" for="data-inici">Data d'entrada</label>
-                            <div class="data-input-wrapper">
-                                <input type="text" id="data-inici" class="form-input" readonly
-                                    placeholder="Clica per seleccionar data">
+                <div id="sistema-reserves-normal">
+                    <!-- Secció de Dates -->
+                    <div class="seccio-dates">
+                        <h3 style="margin-bottom: 1rem; color: #2c3e50;">📅 Selecciona les teves dates</h3>
+    
+                        <div class="inputs-dates">
+                            <div class="form-grup">
+                                <label class="form-label" for="data-inici">Data d'entrada</label>
+                                <div class="data-input-wrapper">
+                                    <input type="text" id="data-inici" class="form-input" readonly
+                                        placeholder="Clica per seleccionar data">
+                                </div>
+                                <!-- Calendari compacte permanent per data d'entrada -->
+                                <div class="calendari-compacte-container">
+                                    <div id="calendari-inici-permanent" class="calendari-compacte"></div>
+                                </div>
                             </div>
-                            <!-- Calendari compacte permanent per data d'entrada -->
-                            <div class="calendari-compacte-container">
-                                <div id="calendari-inici-permanent" class="calendari-compacte"></div>
+    
+                            <div class="form-grup">
+                                <label class="form-label" for="data-fi">Data de sortida</label>
+                                <div class="data-input-wrapper">
+                                    <input type="text" id="data-fi" class="form-input" readonly
+                                        placeholder="Clica per seleccionar data">
+                                </div>
+                                <!-- Calendari compacte permanent per data de sortida -->
+                                <div class="calendari-compacte-container">
+                                    <div id="calendari-fi-permanent" class="calendari-compacte"></div>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="form-grup">
-                            <label class="form-label" for="data-fi">Data de sortida</label>
-                            <div class="data-input-wrapper">
-                                <input type="text" id="data-fi" class="form-input" readonly
-                                    placeholder="Clica per seleccionar data">
-                            </div>
-                            <!-- Calendari compacte permanent per data de sortida -->
-                            <div class="calendari-compacte-container">
-                                <div id="calendari-fi-permanent" class="calendari-compacte"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--
-                    <button class="btn-verificar" onclick="verificarDisponibilitat()">
-                        🔍 Verificar Disponibilitat
-                    </button>
-                    -->
-                    <div id="missatge-disponibilitat"></div>
-
-                    <!-- Botó Continuar (apareix quan hi ha disponibilitat) -->
-                    <div id="boto-continuar-container" style="display: none;">
-                        <button class="btn-continuar" onclick="continuarAmbReserva()">
-                            ➡️ Continuar amb la Reserva
+                        <!--
+                        <button class="btn-verificar" onclick="verificarDisponibilitat()">
+                            🔍 Verificar Disponibilitat
                         </button>
-                    </div>
-
-                    <!-- Llegenda -->
-                    <div class="legenda">
-                        <div class="legenda-item">
-                            <div class="legenda-color" style="background: white; border-color: #ddd;"></div>
-                            <span>Disponible</span>
+                        -->
+                        <div id="missatge-disponibilitat"></div>
+    
+                        <!-- Botó Continuar (apareix quan hi ha disponibilitat) -->
+                        <div id="boto-continuar-container" style="display: none;">
+                            <button class="btn-continuar" onclick="continuarAmbReserva()">
+                                ➡️ Continuar amb la Reserva
+                            </button>
                         </div>
-                        <div class="legenda-item">
-                            <div class="legenda-color" style="background: #e74c3c;"></div>
-                            <span>Ocupat</span>
+    
+                        <!-- Llegenda -->
+                        <div class="legenda">
+                            <div class="legenda-item">
+                                <div class="legenda-color" style="background: white; border-color: #ddd;"></div>
+                                <span>Disponible</span>
+                            </div>
+                            <div class="legenda-item">
+                                <div class="legenda-color" style="background: #e74c3c;"></div>
+                                <span>Ocupat</span>
+                            </div>
+                            <div class="legenda-item">
+                                <div class="legenda-color" style="background: #3498db;"></div>
+                                <span>Avui</span>
+                            </div>
+                            <div class="legenda-item">
+                                <div class="legenda-color" style="background: #27ae60;"></div>
+                                <span>Seleccionat</span>
+                            </div>
                         </div>
-                        <div class="legenda-item">
-                            <div class="legenda-color" style="background: #3498db;"></div>
-                            <span>Avui</span>
-                        </div>
-                        <div class="legenda-item">
-                            <div class="legenda-color" style="background: #27ae60;"></div>
-                            <span>Seleccionat</span>
-                        </div>
-                    </div>
+                    </div> 
                 </div>
 
                 <!-- Formulari de Reserva -->
@@ -296,7 +297,7 @@
             </div>
             <!-- CONTENIDOR FORMSPREE (estades llargues) - AMAGAT PER DEFECTE -->
 <div id="contingut-formspree" style="display: none;">
-    <div class="formulari-reserva" style="background: #f8f9fa; border: 2px solid #e67e22;">
+    <div class="formulari-estades-llargues" style="background: #f8f9fa; border: 2px solid #e67e22;">
         <h3 style="margin-bottom: 1rem; color: #e67e22;">📅 Sol·licitud d'Estada Llarga</h3>
         <p style="margin-bottom: 1.5rem; color: #666;">Omple el formulari i et contactarem amb condicions especials per a estades de 30 nits o més</p>
         
@@ -309,6 +310,11 @@
             <div class="form-grup">
                 <label class="form-label" for="missatge-formspree">Quan t'agradaria allotjar-te? (dates aproximades) *</label>
                 <textarea id="missatge-formspree" name="message" class="form-input" rows="4" required placeholder="Ex: Del 15 de gener al 20 de febrer (35 nits) - Habitació Gràcia"></textarea>
+            </div>
+            
+            <div class="form-grup">
+                <label class="form-label" for="telefon-formspree">Telèfon de contacte (opcional)</label>
+                <input type="tel" id="telefon-formspree" name="telefon" class="form-input" placeholder="+34 123 456 789">
             </div>
             
             <!-- Camps ocults opcionals per millorar l'organització -->
