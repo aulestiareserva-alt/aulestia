@@ -150,186 +150,183 @@
         </section>
 
         <!-- Secció de Reserves -->
-        <section id="reserves" class="section">
-            <h2 class="section-title">Fes la Teva Reserva</h2>
+     
+<section id="reserves" class="section">
+    <h2 class="section-title">Fes la Teva Reserva</h2>
 
-            <div class="main-content">
-                <!-- Selecció d'Immoble -->
-                <div class="selector-immoble">
-                    <div class="btn-immoble seleccionat" data-immoble="Loft Barcelona" style="display: none;">
-                        🏠 Loft Barcelona
+    <div class="main-content">
+        <!-- Selecció d'Immoble -->
+        <div class="selector-immoble">
+            <div class="btn-immoble" data-immoble="Loft Barcelona" style="display: none;">
+                🏠 Loft Barcelona
+            </div>
+            <div class="btn-immoble seleccionat" data-immoble="Habitació Gràcia">
+                🛏️ Habitació Gràcia
+            </div>
+            <div class="btn-immoble" data-immoble="estades-llargues" id="btn-estades-llargues">
+                📅 Estades Llargues (30+ nits)
+            </div>
+        </div>
+
+        <!-- SISTEMA NORMAL DE RESERVES (es mostra per defecte) -->
+        <div id="sistema-reserves-normal">
+            <!-- Secció de Dates -->
+            <div class="seccio-dates">
+                <h3 style="margin-bottom: 1rem; color: #2c3e50;">📅 Selecciona les teves dates</h3>
+
+                <div class="inputs-dates">
+                    <div class="form-grup">
+                        <label class="form-label" for="data-inici">Data d'entrada</label>
+                        <div class="data-input-wrapper">
+                            <input type="text" id="data-inici" class="form-input" readonly
+                                placeholder="Clica per seleccionar data">
+                        </div>
+                        <div class="calendari-compacte-container">
+                            <div id="calendari-inici-permanent" class="calendari-compacte"></div>
+                        </div>
                     </div>
-                    <div class="btn-immoble seleccionat" data-immoble="Habitació Gràcia">
-                        🛏️ Habitació Gràcia
-                    </div>
-                       <!-- NOVA OPCIÓ: Estades Llargues -->
-                    <div class="btn-immoble" data-immoble="estades-llargues" id="btn-estades-llargues">
-                        📅 Estades Llargues (30+ nits)
+
+                    <div class="form-grup">
+                        <label class="form-label" for="data-fi">Data de sortida</label>
+                        <div class="data-input-wrapper">
+                            <input type="text" id="data-fi" class="form-input" readonly
+                                placeholder="Clica per seleccionar data">
+                        </div>
+                        <div class="calendari-compacte-container">
+                            <div id="calendari-fi-permanent" class="calendari-compacte"></div>
+                        </div>
                     </div>
                 </div>
-                <div id="sistema-reserves-normal">
-                    <!-- Secció de Dates -->
-                    <div class="seccio-dates">
-                        <h3 style="margin-bottom: 1rem; color: #2c3e50;">📅 Selecciona les teves dates</h3>
-    
-                        <div class="inputs-dates">
-                            <div class="form-grup">
-                                <label class="form-label" for="data-inici">Data d'entrada</label>
-                                <div class="data-input-wrapper">
-                                    <input type="text" id="data-inici" class="form-input" readonly
-                                        placeholder="Clica per seleccionar data">
-                                </div>
-                                <!-- Calendari compacte permanent per data d'entrada -->
-                                <div class="calendari-compacte-container">
-                                    <div id="calendari-inici-permanent" class="calendari-compacte"></div>
-                                </div>
-                            </div>
-    
-                            <div class="form-grup">
-                                <label class="form-label" for="data-fi">Data de sortida</label>
-                                <div class="data-input-wrapper">
-                                    <input type="text" id="data-fi" class="form-input" readonly
-                                        placeholder="Clica per seleccionar data">
-                                </div>
-                                <!-- Calendari compacte permanent per data de sortida -->
-                                <div class="calendari-compacte-container">
-                                    <div id="calendari-fi-permanent" class="calendari-compacte"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--
-                        <button class="btn-verificar" onclick="verificarDisponibilitat()">
-                            🔍 Verificar Disponibilitat
-                        </button>
-                        -->
-                        <div id="missatge-disponibilitat"></div>
-    
-                        <!-- Botó Continuar (apareix quan hi ha disponibilitat) -->
-                        <div id="boto-continuar-container" style="display: none;">
-                            <button class="btn-continuar" onclick="continuarAmbReserva()">
-                                ➡️ Continuar amb la Reserva
-                            </button>
-                        </div>
-    
-                        <!-- Llegenda -->
-                        <div class="legenda">
-                            <div class="legenda-item">
-                                <div class="legenda-color" style="background: white; border-color: #ddd;"></div>
-                                <span>Disponible</span>
-                            </div>
-                            <div class="legenda-item">
-                                <div class="legenda-color" style="background: #e74c3c;"></div>
-                                <span>Ocupat</span>
-                            </div>
-                            <div class="legenda-item">
-                                <div class="legenda-color" style="background: #3498db;"></div>
-                                <span>Avui</span>
-                            </div>
-                            <div class="legenda-item">
-                                <div class="legenda-color" style="background: #27ae60;"></div>
-                                <span>Seleccionat</span>
-                            </div>
-                        </div>
-                    </div> 
+
+                <div id="missatge-disponibilitat"></div>
+
+                <div id="boto-continuar-container" style="display: none;">
+                    <button class="btn-continuar" onclick="continuarAmbReserva()">
+                        ➡️ Continuar amb la Reserva
+                    </button>
                 </div>
 
-                <!-- Formulari de Reserva -->
-                <div class="formulari-reserva" id="formulari-reserva">
-                    <h3 style="margin-bottom: 1rem; color: #2c3e50;">📋 Dades de la reserva</h3>
-
-                    <div class="info-box">
-                        💡 <strong>Instruccions:</strong> Selecciona l'immoble i les dates, després fes clic a
-                        "Verificar Disponibilitat". Quan estigui disponible, fes clic a "Continuar amb la Reserva" per
-                        omplir el formulari.
+                <div class="legenda">
+                    <div class="legenda-item">
+                        <div class="legenda-color" style="background: white; border-color: #ddd;"></div>
+                        <span>Disponible</span>
                     </div>
-
-                    <div id="resum-reserva" style="display: none;">
-                        <div class="resum-reserva">
-                            <h4 style="margin-bottom: 1rem; color: #2c3e50;">Resum de la reserva</h4>
-                            <div class="resum-item">
-                                <span>Immoble:</span>
-                                <span id="resum-immoble">-</span>
-                            </div>
-                            <div class="resum-item">
-                                <span>Data d'entrada:</span>
-                                <span id="resum-data-inici">-</span>
-                            </div>
-                            <div class="resum-item">
-                                <span>Data de sortida:</span>
-                                <span id="resum-data-fi">-</span>
-                            </div>
-                            <div class="resum-item">
-                                <span>Nombre de nits:</span>
-                                <span id="resum-nits">0</span>
-                            </div>
-                            <div class="resum-item">
-                                <span>Preu per nit:</span>
-                                <span id="resum-preu-nit">0 €</span>
-                            </div>
-                            <div class="resum-item resum-total">
-                                <span>Preu total:</span>
-                                <span id="resum-total">0 €</span>
-                            </div>
-                        </div>
-
-                        <div class="form-grup">
-                            <label class="form-label" for="nom">Nom complet *</label>
-                            <input type="text" id="nom" class="form-input" required>
-                        </div>
-
-                        <div class="form-grup">
-                            <label class="form-label" for="email">Email *</label>
-                            <input type="email" id="email" class="form-input" required>
-                        </div>
-
-                        <div class="form-grup">
-                            <label class="form-label" for="telefon">Telèfon *</label>
-                            <input type="tel" id="telefon" class="form-input" required>
-                        </div>
-
-                        <button type="button" class="btn-reservar" id="btn-reservar" onclick="ferReserva()">
-                            🚀 Fer Reserva
-                        </button>
+                    <div class="legenda-item">
+                        <div class="legenda-color" style="background: #e74c3c;"></div>
+                        <span>Ocupat</span>
                     </div>
-
-                    <div id="missatge-reserva"></div>
+                    <div class="legenda-item">
+                        <div class="legenda-color" style="background: #3498db;"></div>
+                        <span>Avui</span>
+                    </div>
+                    <div class="legenda-item">
+                        <div class="legenda-color" style="background: #27ae60;"></div>
+                        <span>Seleccionat</span>
+                    </div>
                 </div>
             </div>
-            <!-- CONTENIDOR FORMSPREE (estades llargues) - AMAGAT PER DEFECTE -->
-<div id="contingut-formspree" style="display: none;">
-    <div class="formulari-estades-llargues" style="background: #f8f9fa; border: 2px solid #e67e22;">
-        <h3 style="margin-bottom: 1rem; color: #e67e22;">📅 Sol·licitud d'Estada Llarga</h3>
-        <p style="margin-bottom: 1.5rem; color: #666;">Omple el formulari i et contactarem amb condicions especials per a estades de 30 nits o més</p>
-        
-        <form action="https://formspree.io/f/xkopeven" method="POST">
-            <div class="form-grup">
-                <label class="form-label" for="email-formspree">El teu email *</label>
-                <input type="email" id="email-formspree" name="email" class="form-input" required placeholder="exemple@correu.com">
+
+            <!-- Formulari de Reserva Normal -->
+            <div class="formulari-reserva" id="formulari-reserva">
+                <h3 style="margin-bottom: 1rem; color: #2c3e50;">📋 Dades de la reserva</h3>
+
+                <div class="info-box">
+                    💡 <strong>Instruccions:</strong> Selecciona l'immoble i les dates, després fes clic a
+                    "Verificar Disponibilitat". Quan estigui disponible, fes clic a "Continuar amb la Reserva" per
+                    omplir el formulari.
+                </div>
+
+                <div id="resum-reserva" style="display: none;">
+                    <div class="resum-reserva">
+                        <h4 style="margin-bottom: 1rem; color: #2c3e50;">Resum de la reserva</h4>
+                        <div class="resum-item">
+                            <span>Immoble:</span>
+                            <span id="resum-immoble">-</span>
+                        </div>
+                        <div class="resum-item">
+                            <span>Data d'entrada:</span>
+                            <span id="resum-data-inici">-</span>
+                        </div>
+                        <div class="resum-item">
+                            <span>Data de sortida:</span>
+                            <span id="resum-data-fi">-</span>
+                        </div>
+                        <div class="resum-item">
+                            <span>Nombre de nits:</span>
+                            <span id="resum-nits">0</span>
+                        </div>
+                        <div class="resum-item">
+                            <span>Preu per nit:</span>
+                            <span id="resum-preu-nit">0 €</span>
+                        </div>
+                        <div class="resum-item resum-total">
+                            <span>Preu total:</span>
+                            <span id="resum-total">0 €</span>
+                        </div>
+                    </div>
+
+                    <div class="form-grup">
+                        <label class="form-label" for="nom">Nom complet *</label>
+                        <input type="text" id="nom" class="form-input" required>
+                    </div>
+
+                    <div class="form-grup">
+                        <label class="form-label" for="email">Email *</label>
+                        <input type="email" id="email" class="form-input" required>
+                    </div>
+
+                    <div class="form-grup">
+                        <label class="form-label" for="telefon">Telèfon *</label>
+                        <input type="tel" id="telefon" class="form-input" required>
+                    </div>
+
+                    <button type="button" class="btn-reservar" id="btn-reservar" onclick="ferReserva()">
+                        🚀 Fer Reserva
+                    </button>
+                </div>
+
+                <div id="missatge-reserva"></div>
             </div>
-            
-            <div class="form-grup">
-                <label class="form-label" for="missatge-formspree">Quan t'agradaria allotjar-te? (dates aproximades) *</label>
-                <textarea id="missatge-formspree" name="message" class="form-input" rows="4" required placeholder="Ex: Del 15 de gener al 20 de febrer (35 nits) - Habitació Gràcia"></textarea>
+        </div>
+
+        <!-- FORMULARI DE FORMSPREE (estades llargues) - AMAGAT PER DEFECTE -->
+        <div id="formulari-estades-llargues" style="display: none;">
+            <div class="formulari-reserva" style="background: linear-gradient(135deg, #fff5eb, #ffe8d6); border: 2px solid #e67e22;">
+                <div style="text-align: center; margin-bottom: 1.5rem;">
+                    <div style="font-size: 3rem;">🏡</div>
+                    <h3 style="color: #e67e22; margin-top: 0.5rem;">Sol·licitud d'Estada Llarga</h3>
+                    <p style="color: #666; margin-top: 0.5rem;">Estades de 30 nits o més - Condicions especials</p>
+                </div>
+
+                <form action="https://formspree.io/f/xkopeven" method="POST">
+                    <div class="form-grup">
+                        <label class="form-label" for="email-formspree">El teu email *</label>
+                        <input type="email" id="email-formspree" name="email" class="form-input" required placeholder="exemple@correu.com">
+                    </div>
+                    
+                    <div class="form-grup">
+                        <label class="form-label" for="missatge-formspree">Quan t'agradaria allotjar-te? (dates aproximades) *</label>
+                        <textarea id="missatge-formspree" name="message" class="form-input" rows="5" required placeholder="Ex: Del 15 de gener al 20 de febrer (35 nits)"></textarea>
+                    </div>
+                    
+                    <div class="form-grup">
+                        <label class="form-label" for="telefon-formspree">Telèfon de contacte (opcional)</label>
+                        <input type="tel" id="telefon-formspree" name="telefon" class="form-input" placeholder="+34 123 456 789">
+                    </div>
+                    
+                    <input type="hidden" name="_subject" value="Nova sol·licitud d'Estada Llarga - Aulèstia">
+                    <input type="hidden" name="_replyto" id="replyto-formspree">
+                    
+                    <button type="submit" class="btn-reservar" style="background: linear-gradient(135deg, #e67e22, #f39c12); margin-top: 0.5rem;">
+                        📧 Enviar Sol·licitud
+                    </button>
+                </form>
+                
+                <div id="missatge-formspree" style="margin-top: 1rem;"></div>
             </div>
-            
-            <div class="form-grup">
-                <label class="form-label" for="telefon-formspree">Telèfon de contacte (opcional)</label>
-                <input type="tel" id="telefon-formspree" name="telefon" class="form-input" placeholder="+34 123 456 789">
-            </div>
-            
-            <!-- Camps ocults opcionals per millorar l'organització -->
-            <input type="hidden" name="_subject" value="Nova sol·licitud d'Estada Llarga - Aulèstia">
-            <input type="hidden" name="_replyto" id="replyto-formspree">
-            
-            <button type="submit" class="btn-reservar" style="background: linear-gradient(135deg, #e67e22, #f39c12);">
-                📧 Enviar Sol·licitud
-            </button>
-        </form>
-        
-        <div id="missatge-formspree" style="margin-top: 1rem;"></div>
+        </div>
     </div>
-</div>
-        </section>
+</section>
 
         <footer>
             <div class="footer-content">
