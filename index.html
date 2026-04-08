@@ -162,6 +162,10 @@
                     <div class="btn-immoble seleccionat" data-immoble="Habitació Gràcia">
                         🛏️ Habitació Gràcia
                     </div>
+                       <!-- NOVA OPCIÓ: Estades Llargues -->
+                    <div class="btn-immoble" data-immoble="estades-llargues" id="btn-estades-llargues">
+                        📅 Estades Llargues (30+ nits)
+                    </div>
                 </div>
 
                 <!-- Secció de Dates -->
@@ -290,6 +294,35 @@
                     <div id="missatge-reserva"></div>
                 </div>
             </div>
+            <!-- CONTENIDOR FORMSPREE (estades llargues) - AMAGAT PER DEFECTE -->
+<div id="contingut-formspree" style="display: none;">
+    <div class="formulari-reserva" style="background: #f8f9fa; border: 2px solid #e67e22;">
+        <h3 style="margin-bottom: 1rem; color: #e67e22;">📅 Sol·licitud d'Estada Llarga</h3>
+        <p style="margin-bottom: 1.5rem; color: #666;">Omple el formulari i et contactarem amb condicions especials per a estades de 30 nits o més</p>
+        
+        <form action="https://formspree.io/f/xkopeven" method="POST">
+            <div class="form-grup">
+                <label class="form-label" for="email-formspree">El teu email *</label>
+                <input type="email" id="email-formspree" name="email" class="form-input" required placeholder="exemple@correu.com">
+            </div>
+            
+            <div class="form-grup">
+                <label class="form-label" for="missatge-formspree">Quan t'agradaria allotjar-te? (dates aproximades) *</label>
+                <textarea id="missatge-formspree" name="message" class="form-input" rows="4" required placeholder="Ex: Del 15 de gener al 20 de febrer (35 nits) - Habitació Gràcia"></textarea>
+            </div>
+            
+            <!-- Camps ocults opcionals per millorar l'organització -->
+            <input type="hidden" name="_subject" value="Nova sol·licitud d'Estada Llarga - Aulèstia">
+            <input type="hidden" name="_replyto" id="replyto-formspree">
+            
+            <button type="submit" class="btn-reservar" style="background: linear-gradient(135deg, #e67e22, #f39c12);">
+                📧 Enviar Sol·licitud
+            </button>
+        </form>
+        
+        <div id="missatge-formspree" style="margin-top: 1rem;"></div>
+    </div>
+</div>
         </section>
 
         <footer>
