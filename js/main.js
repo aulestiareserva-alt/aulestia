@@ -26,13 +26,39 @@ $(document).ready(async function() {
  * Inicialitzar event listeners
  */
 function initEventListeners() {
-    // Selector d'immobles
-    $('.btn-immoble').on('click', function() {
-        $('.btn-immoble').removeClass('seleccionat');
-        $(this).addClass('seleccionat');
-        const immoble = $(this).data('immoble');
+   // Selector d'immobles (modificat per incloure estades llargues)
+$('.btn-immoble').on('click', function() {
+    $('.btn-immoble').removeClass('seleccionat');
+    $(this).addClass('seleccionat');
+    const immoble = $(this).data('immoble');
+    
+    // Comprovar si és l'opció d'estades llargues
+    if (immoble === 'estades-llargues') {
+        canviarVisualitzacioEstades('estades-llargues');
+        
+        // Configurar el camp replyto automàticament per Formspree
+        setTimeout(function() {
+            const emailInput = document.getElementById('email-formspree');
+            const replytoHidden = document.getElementById('replyto-formspree');
+            if (emailInput && replytoHidden) {
+                const newEmailInput = emailInput.cloneNode(true);
+                emailInput.parentNode.replaceChild(newEmailInput, emailInput);
+                
+                newEmailInput.addEventListener('input', function() {
+                    const replytoField = document.getElementById('replyto-formspree');
+                    if (replytoField) replytoField.value = this.value;
+                });
+                
+                if (newEmailInput.value) {
+                    replytoHidden.value = newEmailInput.value;
+                }
+            }
+        }, 100);
+    } else {
+        canviarVisualitzacioEstades('normal');
         Booking.seleccionarImmoble(immoble);
-    });
+    }
+});
     
     // Navegació entre seccions
     $('.nav-tab').on('click', function() {
@@ -65,7 +91,19 @@ function initEventListeners() {
         }
     });
 }
-
+// Funció per canviar la visualització entre reserves normals i estades llargues
+function canviarVisualitzacioEstades(tipus) {
+    const sistemaNormal = document.getElementById('sistema-reserves-normal');
+    const formulariLlargues = document.getElementById('formulari-estades-llargues');
+    
+    if (tipus === 'estades-llargues') {
+        if (sistemaNormal) sistemaNormal.style.display = 'none';
+        if (formulariLlargues) formulariLlargues.style.display = 'block';
+    } else {
+        if (sistemaNormal) sistemaNormal.style.display = 'block';
+        if (formulariLlargues) formulariLlargues.style.display = 'none';
+    }
+}
 /**
  * Funcions globals per compatibilitat amb HTML inline events
  * (si encara tens onclick="" al HTML, aquestes funcions les mantenen actives)
@@ -89,71 +127,3 @@ window.tancarModal = function() {
 window.netejarSeleccions = function() {
     Booking.netejar();
 };
-// ============================================
-// GESTIÓ ESTADES LLARGUES VS RESERVES NORMALS
-// ============================================
-
-// Funció per canviar la visualització entre reserves normals i estades llargues
-function canviarVisualitzacioEstades(tipus) {
-    const sistemaNormal = document.getElementById('sistema-reserves-normal');
-    const formulariLlargues = document.getElementById('formulari-estades-llargues');
-    
-    if (tipus === 'estades-llargues') {
-        // Amagar sistema normal, mostrar formulari d'estades llargues
-        if (sistemaNormal) sistemaNormal.style.display = 'none';
-        if (formulariLlargues) formulariLlargues.style.display = 'block';
-    } else {
-        // Mostrar sistema normal, amagar formulari d'estades llargues
-        if (sistemaNormal) sistemaNormal.style.display = 'block';
-        if (formulariLlargues) formulariLlargues.style.display = 'none';
-    }
-}
-
-// Modificar l'event listener del selector d'immobles per incloure estades llargues
-$(document).ready(function() {
-    // Guardar la funció original si existeix (per no sobreescriure)
-    const originalImmobleClick = $('.btn-immoble').off('click');
-    
-    // Nou event listener per als botons d'immoble
-    $(document).on('click', '.btn-immoble', function() {
-        $('.btn-immoble').removeClass('seleccionat');
-        $(this).addClass('seleccionat');
-        const immoble = $(this).data('immoble');
-        
-        // Comprovar si és l'opció d'estades llargues
-        if (immoble === 'estades-llargues') {
-            canviarVisualitzacioEstades('estades-llargues');
-            
-            // Configurar el camp replyto automàticament per Formspree
-            setTimeout(function() {
-                const emailInput = document.getElementById('email-formspree');
-                const replytoHidden = document.getElementById('replyto-formspree');
-                if (emailInput && replytoHidden) {
-                    // Eliminar event listeners anteriors
-                    const newEmailInput = emailInput.cloneNode(true);
-                    emailInput.parentNode.replaceChild(newEmailInput, emailInput);
-                    
-                    newEmailInput.addEventListener('input', function() {
-                        const replytoField = document.getElementById('replyto-formspree');
-                        if (replytoField) replytoField.value = this.value;
-                    });
-                    
-                    // Inicialitzar amb el valor actual
-                    if (newEmailInput.value) {
-                        replytoHidden.value = newEmailInput.value;
-                    }
-                }
-            }, 100);
-        } else {
-            canviarVisualitzacioEstades('normal');
-            
-            // Si és un immoble real, cridar la funció original de Booking
-            if (typeof Booking !== 'undefined' && Booking.seleccionarImmoble) {
-                Booking.seleccionarImmoble(immoble);
-            }
-        }
-    });
-});
-
-// Funció global per si es necessita des de HTML
-window.canviarVisualitzacioEstades = canviarVisualitzacioEstades;
